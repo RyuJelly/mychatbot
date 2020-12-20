@@ -17,7 +17,6 @@ class Preprocess:
         self.komoran = Komoran(userdic=userdic)
 
         # 제외할 품사
-        # 참조 : https://docs.komoran.kr/firststep/postypes.html
         # 관계언 제거, 기호 제거
         # 어미 제거
         # 접미사 제거

@@ -1,7 +1,7 @@
-DB_HOST = "multi-bigdata.cljkqcsbb9ok.ap-northeast-2.rds.amazonaws.com"
-DB_USER = "edu12"
-DB_PASSWORD = "edu12"
-DB_NAME = "edudb04"
+DB_HOST = "themightiestkpk.c9jl6xhdt5hy.us-east-1.rds.amazonaws.com"
+DB_USER = "admin"
+DB_PASSWORD = "themightiestkpk1"
+DB_NAME = "themightiestkpk"
 
 
 def DatabaseConfig():

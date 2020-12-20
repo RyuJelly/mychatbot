@@ -35,7 +35,7 @@ tokenizer.fit_on_texts(dict)
 word_index = tokenizer.word_index
 
 # 사전 파일 생성
-f = open("chatbot_dict.bin", "wb")
+f = open("chatbot_dict_v2.bin", "wb")
 try:
     pickle.dump(word_index, f)
 except Exception as e:

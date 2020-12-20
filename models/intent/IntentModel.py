@@ -5,12 +5,14 @@ from tensorflow.keras import preprocessing
 
 # 의도 분류 모델 모듈
 class IntentModel:
+    tf.compat.v1.enable_eager_execution()
+    tf.compat.v1.logging.set_verbosity( tf.compat.v1.logging.ERROR)
     def __init__(self, model_name, proprocess):
 
         # 의도 클래스 별 레이블
-        self.labels = {0: "인사", 1: "레시피저장", 2: "레시피추천", 3: "현재식재료", 4: "달걀개수", 5: "레몬개수", 6: "자두개수", 7: "오이개수", 8: "사이다개수", 9: "당근개수",
-                       10: "애호박개수", 11: "파인애플개수", 12: "사과개수", 13: "양파개수", 14: "마늘개수", 15: "토마토개수", 16: "브로콜리개수", 17: "깻잎개수",
-                       18: "가지개수", 19: "단호박개수", 20: "무개수", 21: "양배추개수", 22: "파프리카개수", 23: "야쿠르트개수", 24: "맥주개수", 25: "콜라개수", 26: "옥수수개수"}
+        self.labels = {0: "달걀개수", 1: "레몬개수", 2: "자두개수", 3: "오이개수",  4: "사이다개수", 5: "당근개수", 6: "애호박개수", 7: "옥수수개수", 8: "파인애플개수",
+                       9: "사과개수", 10: "양파개수", 11: "마늘개수", 12: "토마토개수", 13: "브로콜리개수", 14: "깻잎개수",
+                       15: "가지개수", 16: "단호박개수", 17: "무개수", 18: "양배추개수", 19: "파프리카개수", 20: "야쿠르트개수", 21: "맥주개수", 22: "콜라개수"}
 
         # 의도 분류 모델 불러오기
         self.model = load_model(model_name)
@@ -36,4 +38,6 @@ class IntentModel:
 
         predict = self.model.predict(padded_seqs)
         predict_class = tf.math.argmax(predict, axis=1)
+        # print('predict_class',predict_class)
+        # print('predict_class.numpy()[0]',predict_class.numpy()[0])
         return predict_class.numpy()[0]

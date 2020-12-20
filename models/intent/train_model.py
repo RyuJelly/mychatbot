@@ -13,8 +13,8 @@ queries = data['query'].tolist()
 intents = data['intent'].tolist()
 
 from utils.Preprocess import Preprocess
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict_v2.bin',
+               userdic='../../utils/user_dic_v2.tsv')
 
 # 단어 시퀀스 생성
 sequences = []
@@ -86,7 +86,7 @@ concat = concatenate([pool1, pool2, pool3])
 hidden = Dense(128, activation=tf.nn.relu)(concat)
 dropout_hidden = Dropout(rate=dropout_prob)(hidden)
 logits = Dense(5, name='logits')(dropout_hidden)
-predictions = Dense(30, activation=tf.nn.softmax)(logits)
+predictions = Dense(23, activation=tf.nn.softmax)(logits)
 
 
 # 모델 생성  ○5
@@ -107,4 +107,4 @@ print('loss: %f' % (loss))
 
 
 # 모델 저장  ○8
-model.save('intent_model.h5')
+model.save('intent_model_v2.h5')
